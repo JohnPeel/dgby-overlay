@@ -1,0 +1,12 @@
+<repositories version="1.0">
+    <repo quality="experimental" status="unofficial">
+        <name>dgby-overlay</name>
+        <description lang="en">Dgby's Overlay</description>
+        <homepage>https://github.com/Dgby714/dgby-overlay</homepage>
+        <owner type="person">
+            <email>john@dgby.org</email>
+            <name>John Peel</name>
+        </owner>
+        <source type="git">git://github.com/Dgby714/dgby-overlay.git</source>
+    </repo>
+</repositories>
