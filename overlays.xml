@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories xmlns="" version="1.0">
-  <repo quality="experimental" status="official">
+  <repo quality="experimental" status="unofficial">
     <name><![CDATA[dgby-overlay]]></name>
     <description lang="en"><![CDATA[Dgby's Overlay]]></description>
     <homepage>https://github.com/JohnPeel/dgby-overlay</homepage>
