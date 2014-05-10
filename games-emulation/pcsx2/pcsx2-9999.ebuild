@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/PCSX2/pcsx2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="media-libs/alsa-lib
 	app-arch/bzip2
