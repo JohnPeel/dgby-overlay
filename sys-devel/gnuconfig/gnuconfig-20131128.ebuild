@@ -49,8 +49,7 @@ src_unpack() {
 
 src_prepare() {
 	epatch "${WORKDIR}"/*.patch
-	epatch "${FILESDIR}"/0003-add-bionic-libc-to-config.sub.patch
-	epatch "${FILESDIR}"/0004-guess-support-for-bionic-and-android.patch
+	epatch "${FILESDIR}"/${PV}/*.patch
 	use elibc_uclibc && sed -i 's:linux-gnu:linux-uclibc:' testsuite/config-guess.data #180637
 }
 
