@@ -1,0 +1,15 @@
+--- ../work/config.guess	2013-12-20 16:10:58.000000000 -0500
++++ config.guess	2014-05-11 06:55:49.087753293 -0500
+@@ -146,7 +146,15 @@
+ 	#elif defined(__dietlibc__)
+ 	LIBC=dietlibc
+- 	#else
++	#elif define(__ANDROID__)
++	LIBC=android
++	#elif defined(__BIONIC__)
++	LIBC=bionic
++	#else
+ 	LIBC=gnu
+ 	#endif
+ 	EOF
+ 	eval `$CC_FOR_BUILD -E $dummy.c 2>/dev/null | grep '^LIBC'`
