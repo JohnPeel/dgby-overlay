@@ -1,4 +1,4 @@
---- ../work/config.sub	2013-12-20 16:10:58.000000000 -0500
+--- config.sub	2013-12-20 16:10:58.000000000 -0500
 +++ config.sub	2014-05-11 06:52:53.727761762 -0500
 @@ -115,7 +115,7 @@
  # Here we must recognize all the valid KERNEL-OS combinations.
