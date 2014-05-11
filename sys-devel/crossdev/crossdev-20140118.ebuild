@@ -30,7 +30,7 @@ RDEPEND=">=sys-apps/portage-2.1
 DEPEND="app-arch/xz-utils"
 
 src_prepare() {
-	epatch "${WORKDIR}"/*.patch
+	epatch "${FILESDIR}"/*.patch
 }
 
 src_install() {
