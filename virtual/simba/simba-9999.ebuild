@@ -11,13 +11,12 @@ SRC_URI=""
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
-IUSE="keybinder ffi"
+IUSE="+keybinder +ffi"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
+DEPEND="
 	dev-lang/fpc
 	dev-lang/lazarus
 	x11-libs/libXtst
-	keybinder? ( =dev-libs/keybinder-0.3.0-r200 )
+	keybinder? ( =dev-libs/keybinder-0.3.0-r2* )
 	ffi? ( dev-libs/libffi )
 "
