@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="RuneScape client for Linux and Unix"
 HOMEPAGE="https://github.com/HikariKnight/rsu-client"
-SRC_URI="https://github.com/HikariKnight/${MY_PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/HikariKnight/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
