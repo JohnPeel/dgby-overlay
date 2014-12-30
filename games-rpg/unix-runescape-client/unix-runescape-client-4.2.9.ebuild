@@ -32,26 +32,45 @@ DEPEND="virtual/jre
 		wine? ( app-emulation/wine )"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-  unpack ${A}
-
+src_prepare() {
   # Removing old libraries, cario-nogl installs new ones
-  rm -rf "${S}/runescape/rsu/3rdParty/linux/cairo-nogl"
+  use cario-nogl && rm -rf "${S}/runescape/rsu/3rdParty/linux/cairo-nogl"
+  
+  # The example is corrupt...
+  mv "${S}/runescape/share/configs/settings.conf.example" "${S}/runescape/share/configs/settings.conf.old"
+  
+  # Set java path to system-java
+  sed -i -e "s/preferredjava=default-java/preferredjava=\/etc\/java-config-2\/current-system-vm\/bin\/java/" \
+  	"${S}/runescape/share/configs/settings.conf" || die "sed failed"
+
+  # Replace example with current config
+  cp "${S}/runescape/share/configs/settings.conf" "${S}/runescape/share/configs/settings.conf.example"
 }
 
 src_install() {
-  cd "${PN}"
+  cd "runescape"
 
-  games_make_wrapper ${PN} ./runescape "${GAMES_PREFIX_OPT}/${PN}" || die "games_make_wrapper failed"
+  games_make_wrapper runescape "${GAMES_PREFIX_OPT}/runescape/runescape"
+  games_make_wrapper update-runescape-client "${GAMES_PREFIX_OPT}/runescape/updater"
 
-  insinto "${GAMES_PREFIX_OPT}/${PN}"
+  insinto "${GAMES_PREFIX_OPT}/runescape"
   doins -r * || die "doins failed"
   
+  exeinto "${GAMES_PREFIX_OPT}/runescape"
+  doexe runescape
+  doexe updater
+  doexe rsu-settings
+
+  exeinto "${GAMES_PREFIX_OPT}/runescape/rsu"
+  doexe rsu/rsu-query
+
+  exeinto "${GAMES_PREFIX_OPT}/runescape/rsu/bin"
+  doexe rsu/bin/*
+
   make_desktop_entry runescape "RuneScape Unix Client" \
-  	"${GAMES_PREFIX_OPT}/${PN}/share/runescape.png" || die "make_desktop_entry failed"
+  	"${GAMES_PREFIX_OPT}/runescape/share/runescape.png" || die "make_desktop_entry failed"
 
   dodoc AUTHORS COPYING changelog.txt bin/README.md || die "dodoc failed"
 
   prepgamesdirs
 }
-
